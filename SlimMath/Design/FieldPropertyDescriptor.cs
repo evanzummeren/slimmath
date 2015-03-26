@@ -46,7 +46,7 @@ namespace SlimMath.Design
         }
 
         public FieldPropertyDescriptor(FieldInfo fieldInfo)
-            : base(fieldInfo.Name, (Attribute[])fieldInfo.GetCustomAttributes(true))
+            : base(fieldInfo.Name, Array.ConvertAll(fieldInfo.GetCustomAttributes(true), item => item as Attribute))
         {
             this.fieldInfo = fieldInfo;
         }
